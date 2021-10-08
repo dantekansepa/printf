@@ -6,14 +6,14 @@
 */
 bool is_valid_id(char id)
 {
-if (id == 'c' || id == 's' || id == 'd' || id == 'i'
-|| id == 'u' || id == 'b' || id == 'o'
-|| id == 'X' || id == 'R' || id == 'x'
-|| id == 'p' || id == 'r' || id == 'S')
+	if (id == 'c' || id == 's' || id == 'd' || id == 'i'
+			|| id == 'u' || id == 'b' || id == 'o'
+			|| id == 'X' || id == 'R' || id == 'x'
+			|| id == 'p' || id == 'r' || id == 'S')
 
-return (true);
+		return (true);
 
-return (false);
+	return (false);
 }
 
 /**
@@ -26,15 +26,15 @@ return (false);
 int checkflag(printing_format *format, char flag)
 {
 
-/*check for flages*/
-if (flag == ' ' || flag == '+' || flag == '#')
-{
-format->flag = flag;
-format->replaced += 1;
-return (true);
-}
-format->flag = '\0';
-return (false);
+	/*check for flages*/
+	if (flag == ' ' || flag == '+' || flag == '#')
+	{
+		format->flag = flag;
+		format->replaced += 1;
+		return (true);
+	}
+	format->flag = '\0';
+	return (false);
 }
 
 /**
@@ -46,17 +46,17 @@ return (false);
  */
 int checkwidth(printing_format *format, const char *s)
 {
-int i = 0;
+	int i = 0;
 
 
 	/*check for width*/
-while (*(s + i) > 47 && *(s + i) < 58)
-{
-format->width = format->width * 10 + (int)(*(s + i) - 48);
-format->replaced += 1;
-i++;
-}
-return (i);
+	while (*(s + i) > 47 && *(s + i) < 58)
+	{
+		format->width = format->width * 10 + (int)(*(s + i) - 48);
+		format->replaced += 1;
+		i++;
+	}
+	return (i);
 }
 
 /**
@@ -68,17 +68,17 @@ return (i);
  */
 int checkprecision(printing_format *format, const char *s)
 {
-int i = 0;
+	int i = 0;
 
 	/*check for precision*/
 
-while (*(s + i) > 47 && *(s + i) < 58)
-{
-format->precision = format->precision * 10 + (int)(*(s + i) - 48);
-format->replaced += 1;
-i++;
-}
-return (i);
+	while (*(s + i) > 47 && *(s + i) < 58)
+	{
+		format->precision = format->precision * 10 + (int)(*(s + i) - 48);
+		format->replaced += 1;
+		i++;
+	}
+	return (i);
 }
 
 /**
@@ -90,16 +90,16 @@ return (i);
  */
 int checkmod(printing_format *format, const char *s)
 {
-int i = 0;
+	int i = 0;
 
-if (*(s) == 'h' || *(s) == 'l')
-{
-format->mod = *(s);
-format->replaced += 1;
-i++;
-}
+	if (*(s) == 'h' || *(s) == 'l')
+	{
+		format->mod = *(s);
+		format->replaced += 1;
+		i++;
+	}
 
-else
-format->mod = '\0';
-return (i);
+	else
+		format->mod = '\0';
+	return (i);
 }
