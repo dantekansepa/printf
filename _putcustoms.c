@@ -7,15 +7,15 @@
  */
 char *_putrts(va_list list, __attribute__((unused)) printing_format * format)
 {
-	char *s = va_arg(list, char *);
-	char *s2 = malloc(sizeof(char) * _strlen(s) + 1);
+char *s = va_arg(list, char *);
+char *s2 = malloc(sizeof(char) * _strlen(s) + 1);
 
-	if (!s2)
-		return (NULL);
+if (!s2)
+return (NULL);
 
-	_strcpy(s2, s);
-	rev_string(s2);
-	return (s2);
+_strcpy(s2, s);
+rev_string(s2);
+return (s2);
 
 }
 /**
@@ -27,15 +27,15 @@ char *_putrts(va_list list, __attribute__((unused)) printing_format * format)
 char *_putrot13(va_list list, __attribute__((unused)) printing_format * format)
 {
 
-	char *s = va_arg(list, char *);
-	char *s2 = malloc(sizeof(char) * _strlen(s) + 1);
+char *s = va_arg(list, char *);
+char *s2 = malloc(sizeof(char) * _strlen(s) + 1);
 
-	if (!s2)
-		return (NULL);
+if (!s2)
+return (NULL);
 
-	_strcpy(s2, s);
-	rot13(s2);
-	return (s2);
+_strcpy(s2, s);
+rot13(s2);
+return (s2);
 
 }
 /**
@@ -50,36 +50,36 @@ char *_putrot13(va_list list, __attribute__((unused)) printing_format * format)
  */
 char *_putS(va_list l, __attribute__((unused)) printing_format * format)
 {
-	char *_s2, *s2, *hex, *_hex, *s = va_arg(l, char *);
-	int n;
+char *_s2, *s2, *hex, *_hex, *s = va_arg(l, char *);
+int n;
 
-	if (!s)
-		return (NULL);
-	s2 = malloc(sizeof(char) * _strlen(s) * 4 + 1);
-	if (!s2)
-		return (NULL);
-	_s2 = s2;
-	while (*s)
-	{
-		n = *s;
-		if ((n > 0 && n < 32) || n >= 127)
-		{
-			*_s2 = '\\', *(_s2 + 1) = 'x';
-			_s2 += 2;
-			if (n < 16)
-				*_s2 = '0', _s2 += 1;
-			hex = to_hex(n);
-			if (!hex)
-				return (NULL);
-			_hex = hex;
-			while (*_hex)
-				*_s2 = *_hex, _s2 += 1, _hex += 1;
-			free(hex);
-		}
-		else
-			*_s2 = *s, _s2 += 1;
-		s++;
-	}
-	_s2 = (void *)0;
-	return (s2);
+if (!s)
+return (NULL);
+s2 = malloc(sizeof(char) * _strlen(s) * 4 + 1);
+if (!s2)
+return (NULL);
+_s2 = s2;
+while (*s)
+{
+n = *s;
+if ((n > 0 && n < 32) || n >= 127)
+{
+*_s2 = '\\', *(_s2 + 1) = 'x';
+_s2 += 2;
+if (n < 16)
+*_s2 = '0', _s2 += 1;
+hex = to_hex(n);
+if (!hex)
+return (NULL);
+_hex = hex;
+while (*_hex)
+*_s2 = *_hex, _s2 += 1, _hex += 1;
+free(hex);
+}
+else
+*_s2 = *s, _s2 += 1;
+s++;
+}
+_s2 = (void *)0;
+return (s2);
 }
